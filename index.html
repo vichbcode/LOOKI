@@ -1,0 +1,658 @@
+<!--
+  Fichier : index.html
+  Projet  : Site vitrine du club LOOKI
+  Objectif: Hub des applications LOOKI (TRIXIFILMS, Hagar Auth, Bientôt)
+  Langue  : Français
+  Notes   : HTML5 sémantique, mobile-first, accessible, vanilla JS/CSS
+-->
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <!-- Métadonnées de base -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Titre et description SEO (FR) -->
+  <title>LOOKI — Hub d'applications tech</title>
+  <meta name="description" content="LOOKI est le club tech qui regroupe ses applications : TRIXIFILMS (application Android gratuite pour explorer cinéma et séries), Hagar Auth (service d'authentification clé en main open source), et bien d'autres à venir.">
+  <meta name="author" content="LOOKI">
+  <meta name="robots" content="index, follow">
+
+  <!-- Thème couleur -->
+  <meta name="theme-color" content="#0b0b0f" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+
+  <!-- Open Graph (partage réseaux sociaux) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="LOOKI — Hub d'applications tech">
+  <meta property="og:description" content="Découvrez les applications du club LOOKI : TRIXIFILMS, Hagar Auth (open source) et projets à venir.">
+  <meta property="og:site_name" content="LOOKI">
+  <meta property="og:image" content="assets/logo.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LOOKI — Hub d'applications tech">
+  <meta name="twitter:description" content="Hub des applications du club LOOKI. Design tech, sombre par défaut, orienté produit.">
+  <meta name="twitter:image" content="assets/logo.png">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+
+  <!-- Polices Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Feuille de styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ========================= NAVBAR STICKY ========================= -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="container navbar__inner">
+      <!-- Logo + nom du club (gauche) -->
+      <a href="#accueil" class="navbar__brand" aria-label="Retour à l'accueil LOOKI">
+        <img src="assets/logo.png" alt="Logo du club LOOKI" class="navbar__logo">
+        <span class="navbar__name">LOOKI</span>
+      </a>
+
+      <!-- Navigation principale (desktop) -->
+      <nav class="navbar__nav" role="navigation" aria-label="Navigation principale">
+        <ul class="navbar__links">
+          <li><a href="#accueil" class="navbar__link active" data-nav>Accueil</a></li>
+          <li><a href="#apps" class="navbar__link" data-nav>Apps</a></li>
+          <li><a href="#fonctionnalites" class="navbar__link" data-nav>Fonctionnalités</a></li>
+          <li><a href="#doc" class="navbar__link" data-nav>Doc</a></li>
+          <li><a href="#communaute" class="navbar__link" data-nav>Communauté</a></li>
+          <li><a href="#contact" class="navbar__link" data-nav>Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Actions navbar -->
+      <div class="navbar__actions">
+        <!-- Bascule thème clair/sombre -->
+        <button class="btn btn--ghost btn--icon" id="themeToggle" type="button" aria-label="Basculer entre le thème sombre et clair" title="Basculer le thème">
+          <svg class="icon icon--sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon icon--moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Menu mobile -->
+        <button class="btn btn--ghost btn--icon navbar__toggle" id="navToggle" type="button" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobileNav">
+          <span class="hamburger" aria-hidden="true">
+            <span class="hamburger__line"></span>
+            <span class="hamburger__line"></span>
+            <span class="hamburger__line"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu mobile -->
+    <div class="navbar__mobile" id="mobileNav" hidden>
+      <div class="navbar__mobile-backdrop" data-close-nav></div>
+      <div class="navbar__mobile-panel" role="dialog" aria-modal="true" aria-label="Menu de navigation mobile">
+        <nav aria-label="Navigation mobile">
+          <ul class="navbar__mobile-links">
+            <li><a href="#accueil" class="navbar__mobile-link" data-nav-mobile>Accueil</a></li>
+            <li><a href="#apps" class="navbar__mobile-link" data-nav-mobile>Apps</a></li>
+            <li><a href="#fonctionnalites" class="navbar__mobile-link" data-nav-mobile>Fonctionnalités</a></li>
+            <li><a href="#doc" class="navbar__mobile-link" data-nav-mobile>Doc</a></li>
+            <li><a href="#communaute" class="navbar__mobile-link" data-nav-mobile>Communauté</a></li>
+            <li><a href="#contact" class="navbar__mobile-link" data-nav-mobile>Contact</a></li>
+          </ul>
+        </nav>
+        <div class="navbar__mobile-footer">
+          <button class="btn btn--secondary btn--block" id="closeNavBtn" type="button">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="accueil" role="main">
+    <!-- 1. HERO -->
+    <section class="section hero" aria-labelledby="heroTitle">
+      <div class="container hero__inner">
+        <div class="hero__content" data-reveal>
+          <p class="eyebrow mono">// Club LOOKI</p>
+          <h1 id="heroTitle" class="hero__title">
+            Des applications pour <span class="text-gradient">donner du rythme</span> à vos idées
+          </h1>
+          <p class="hero__subtitle">
+            LOOKI regroupe des outils tech pensés pour être simples, utiles et agréables à utiliser : TRIXIFILMS (cinéma & séries) et Hagar Auth (open source). Un hub unique pour nos applications.
+          </p>
+          <div class="hero__actions">
+            <a href="#apps" class="btn btn--primary">Découvrir nos apps<span class="arrow">→</span></a>
+            <a href="https://github.com/vichbcode/TRIXIFILMS" class="btn btn--secondary" target="_blank" rel="noopener noreferrer">Voir sur GitHub<span class="arrow">→</span></a>
+          </div>
+          <div class="hero__trust">
+            <span class="mono small muted">// Propulsé par le club LOOKI</span>
+            <div class="hero__logos">
+              <img src="assets/logo.png" alt="LOOKI" loading="lazy">
+              <img src="assets/trixifilms.png" alt="TRIXIFILMS" loading="lazy">
+              <img src="assets/hagar-auth.png" alt="Hagar Auth" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <div class="hero__visual" data-reveal="delay">
+          <div class="orb orb--primary"></div>
+          <div class="orb orb--secondary"></div>
+          <figure class="hero__figure">
+            <img src="assets/logo.png" alt="Logo du club LOOKI" class="hero__logo" loading="eager">
+          </figure>
+        </div>
+      </div>
+      <div class="hero__bg"></div>
+    </section>
+
+    <!-- 2. CHIFFRES CLÉS -->
+    <section class="section stats" aria-labelledby="statsTitle">
+      <div class="container">
+        <h2 id="statsTitle" class="sr-only">Chiffres clés</h2>
+        <p class="eyebrow mono center">// Chiffres clés</p>
+        <div class="stats__grid">
+          <article class="stat-card" data-reveal>
+            <p class="stat-card__value" data-count="2">0</p>
+            <p class="stat-card__label">Applications</p>
+          </article>
+          <article class="stat-card" data-reveal="delay-1">
+            <p class="stat-card__value" data-count="1">0</p>
+            <p class="stat-card__label">Projet actif</p>
+          </article>
+          <article class="stat-card" data-reveal="delay-2">
+            <p class="stat-card__value" data-count="100">0</p>
+            <p class="stat-card__label">Idées en roadmap</p>
+          </article>
+          <article class="stat-card" data-reveal="delay-3">
+            <p class="stat-card__value">+Multi</p>
+            <p class="stat-card__label">Plateformes</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. NOS APPLICATIONS -->
+    <section id="apps" class="section apps" aria-labelledby="appsTitle">
+      <div class="container">
+        <header class="section__header" data-reveal>
+          <p class="eyebrow mono">// Applications</p>
+          <h2 id="appsTitle" class="section__title">Nos <span class="text-gradient">applications</span></h2>
+          <p class="section__subtitle">Un petit hub pour regrouper nos outils sous l'identité LOOKI.</p>
+        </header>
+        <div class="cards-grid">
+          <!-- TRIXIFILMS -->
+          <article class="app-card" data-reveal>
+            <div class="app-card__header">
+              <img src="assets/trixifilms.png" alt="Logo TRIXIFILMS" class="app-card__logo" loading="lazy">
+              <span class="chip chip--active mono">MOBILE</span>
+            </div>
+            <h3 class="app-card__title">TRIXIFILMS</h3>
+            <p class="app-card__desc">
+              <strong>TRIXIFILMS</strong> est une application mobile Android gratuite pour explorer le cinéma et les séries : catalogue mondial, bandes-annonces, fiches complètes, notes et messages, collections partagées et bien plus. Aucune pub, aucun traceur, aucune revente de données.
+            </p>
+            <ul class="app-card__features">
+              <li>Carnet : vus / à voir</li>
+              <li>Notes & critiques</li>
+              <li>Shorts BA (scroll vertical)</li>
+              <li>Playlists (création & partage)</li>
+            </ul>
+            <div class="app-card__actions">
+              <a href="#trixifilms" class="btn btn--primary btn--sm">En savoir plus<span class="arrow">→</span></a>
+              <a href="https://trixifilmx.vercel.app/installation" class="btn btn--secondary btn--sm" target="_blank" rel="noopener noreferrer">Télécharger l'APK</a>
+            </div>
+          </article>
+
+          <!-- HAGAR AUTH -->
+          <article class="app-card" data-reveal="delay-1">
+            <div class="app-card__header">
+              <img src="assets/hagar-auth.png" alt="Logo Hagar Auth" class="app-card__logo" loading="lazy">
+              <span class="chip mono">AUTH</span>
+            </div>
+            <h3 class="app-card__title">Hagar Auth</h3>
+            <p class="app-card__desc">
+              Service d'authentification <strong>clé en main</strong> et <strong>open source</strong>. Vous créez un projet (« Hagar »), définissez vos champs, et l'app génère des formulaires d'inscription/connexion prêts à intégrer. <strong>Pas de backend à écrire</strong> : vous déposez les fichiers générés et l'authentification fonctionne.
+            </p>
+            <ul class="app-card__features">
+              <li>Inscription / Connexion générées</li>
+              <li>Champs personnalisables</li>
+              <li>Stockage sécurisé (Argon2id)</li>
+              <li>Tableau de bord des inscrits</li>
+            </ul>
+            <div class="app-card__actions">
+              <a href="#auth" class="btn btn--primary btn--sm">Voir l'intégration<span class="arrow">→</span></a>
+              <a href="https://hagar-auth.vercel.app" class="btn btn--secondary btn--sm" target="_blank" rel="noopener noreferrer">Site officiel</a>
+            </div>
+            <div class="app-card__tag mono small muted">Open source · Sans backend à écrire</div>
+          </article>
+
+          <!-- BIEN BIENTÔT -->
+          <article class="app-card app-card--soon" data-reveal="delay-2">
+            <div class="app-card__header">
+              <div class="app-card__logo-placeholder mono">++</div>
+              <span class="chip chip--soon mono">BIENTÔT</span>
+            </div>
+            <h3 class="app-card__title">Bientôt</h3>
+            <p class="app-card__desc">
+              D'autres applications verront le jour sous le label LOOKI. Elles seront présentées ici au fur et à mesure de leur lancement.
+            </p>
+            <ul class="app-card__features">
+              <li>Nouvelles idées</li>
+              <li>Fonctionnalités utiles</li>
+              <li>Design cohérent</li>
+              <li>Expérience soignée</li>
+            </ul>
+            <div class="app-card__actions">
+              <button class="btn btn--ghost btn--sm" disabled>À venir</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ZOOM TRIXIFILMS -->
+    <section id="trixifilms" class="section zoom zoom--trix" aria-labelledby="trixTitle">
+      <div class="container">
+        <header class="section__header" data-reveal>
+          <p class="eyebrow mono">// Zoom — TRIXIFILMS</p>
+          <h2 id="trixTitle" class="section__title">TRIXIFILMS — <span class="text-gradient">suivi de films</span></h2>
+          <p class="section__subtitle">L'ambiance Letterboxd, avec un twist vidéo (shorts de bandes-annonces) au scroll vertical.</p>
+        </header>
+
+        <div class="features-num" id="fonctionnalites">
+          <article class="feature-num" data-reveal>
+            <span class="feature-num__index mono">01 —</span>
+            <h3 class="feature-num__title">Catalogue & recherche</h3>
+            <p class="feature-num__desc">Des milliers de films et séries. Recherche par titre, réalisateur, acteur, production ou mots-clés du résumé. Filtres par genre et origine combinables.</p>
+          </article>
+          <article class="feature-num" data-reveal="delay-1">
+            <span class="feature-num__index mono">02 —</span>
+            <h3 class="feature-num__title">Fiches détaillées</h3>
+            <p class="feature-num__desc">Synopsis, fiche technique (année, durée, pays, note IMDb, genres), équipe et distribution avec photos. Filmographie complète en un appui. Saisons et épisodes pour les séries.</p>
+          </article>
+          <article class="feature-num" data-reveal="delay-2">
+            <span class="feature-num__index mono">03 —</span>
+            <h3 class="feature-num__title">Short — flux de bandes-annonces</h3>
+            <p class="feature-num__desc">Un flux vertical de bandes-annonces, chargées automatiquement par lots, mêlant les genres. Glisse vers le bas pour la suivante, un bouton flottant permet d'y accéder depuis n'importe quelle page.</p>
+          </article>
+          <article class="feature-num" data-reveal="delay-3">
+            <span class="feature-num__index mono">04 —</span>
+            <h3 class="feature-num__title">Notes & discussions</h3>
+            <p class="feature-num__desc">Chaque film possède sa page de discussion. Notes de 1 à 5 étoiles et messages. Le serveur force le vrai pseudo du compte — pas d'usurpation possible.</p>
+          </article>
+          <article class="feature-num" data-reveal>
+            <span class="feature-num__index mono">05 —</span>
+            <h3 class="feature-num__title">Top de la communauté</h3>
+            <p class="feature-num__desc">Les meilleurs films du moment, classés selon les notes de la communauté. Ajoutez-y vos coups de cœur.</p>
+          </article>
+          <article class="feature-num" data-reveal="delay-1">
+            <span class="feature-num__index mono">06 —</span>
+            <h3 class="feature-num__title">Box — collections partagées</h3>
+            <p class="feature-num__desc">Créez des collections de films, publique ou privée. Chaque Box possède un code unique à 8 caractères à envoyer à vos amis. Seul le propriétaire gère le contenu.</p>
+          </article>
+          <article class="feature-num" data-reveal="delay-2">
+            <span class="feature-num__index mono">07 —</span>
+            <h3 class="feature-num__title">Compte sécurisé</h3>
+            <p class="feature-num__desc">Inscription en quelques secondes (pseudo + mot de passe). Session persistante, mots de passe hachés et connexion chiffrée entre l'app et le serveur.</p>
+          </article>
+          <article class="feature-num" data-reveal="delay-3">
+            <span class="feature-num__index mono">08 —</span>
+            <h3 class="feature-num__title">Mises à jour automatiques</h3>
+            <p class="feature-num__desc">L'app vérifie automatiquement les nouvelles versions et propose de les installer en un appui. Vérification manuelle possible depuis les paramètres. Android 7.0+.</p>
+          </article>
+        </div>
+
+        <!-- Captures d'écran réelles de l'application TRIXIFILMS -->
+        <div class="mockups mockups--screens" aria-label="Captures d'écran de l'application TRIXIFILMS">
+          <figure class="mockup" data-reveal>
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <img src="assets/screenshot-1.jpeg" alt="Capture d'écran TRIXIFILMS — écran principal" class="phone-shot" loading="lazy">
+              </div>
+              <div class="phone-home"></div>
+            </div>
+            <figcaption class="mockup__label">Écran — Accueil</figcaption>
+          </figure>
+
+          <figure class="mockup" data-reveal="delay-1">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <img src="assets/screenshot-2.jpeg" alt="Capture d'écran TRIXIFILMS — fiche film" class="phone-shot" loading="lazy">
+              </div>
+              <div class="phone-home"></div>
+            </div>
+            <figcaption class="mockup__label">Écran — Fiche film</figcaption>
+          </figure>
+
+          <figure class="mockup" data-reveal="delay-2">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <img src="assets/screenshot-3.jpeg" alt="Capture d'écran TRIXIFILMS — flux de bandes-annonces Short" class="phone-shot" loading="lazy">
+              </div>
+              <div class="phone-home"></div>
+            </div>
+            <figcaption class="mockup__label">Écran — Short (bandes-annonces)</figcaption>
+          </figure>
+
+          <figure class="mockup" data-reveal="delay-3">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <img src="assets/screenshot-4.jpeg" alt="Capture d'écran TRIXIFILMS — Box et collections" class="phone-shot" loading="lazy">
+              </div>
+              <div class="phone-home"></div>
+            </div>
+            <figcaption class="mockup__label">Écran — Box / Collections</figcaption>
+          </figure>
+
+          <figure class="mockup" data-reveal>
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <img src="assets/screenshot-5.jpeg" alt="Capture d'écran TRIXIFILMS — Top de la communauté" class="phone-shot" loading="lazy">
+              </div>
+              <div class="phone-home"></div>
+            </div>
+            <figcaption class="mockup__label">Écran — Top communauté</figcaption>
+          </figure>
+
+          <figure class="mockup" data-reveal="delay-1">
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <img src="assets/screenshot-6.jpeg" alt="Capture d'écran TRIXIFILMS — notes et discussions" class="phone-shot" loading="lazy">
+              </div>
+              <div class="phone-home"></div>
+            </div>
+            <figcaption class="mockup__label">Écran — Notes & messages</figcaption>
+          </figure>
+        </div>
+
+        <div class="zoom__actions center" data-reveal>
+          <a href="https://trixifilmx.vercel.app/installation" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Télécharger l'APK<span class="arrow">→</span></a>
+          <a href="https://github.com/vichbcode/TRIXIFILMS" class="btn btn--secondary" target="_blank" rel="noopener noreferrer">Voir sur GitHub (open source)<span class="arrow">→</span></a>
+        </div>
+        <p class="center small muted mono" data-reveal>// Android 7.0 ou plus récent · Gratuit · Sans pub ni traceur · Open source</p>
+      </div>
+    </section>
+
+    <!-- 5. ZOOM AUTHENTIFICATION -->
+    <section id="auth" class="section zoom zoom--auth" aria-labelledby="authTitle">
+      <div class="container">
+        <header class="section__header" data-reveal>
+          <p class="eyebrow mono">// Zoom — Hagar Auth <span class="chip chip--active mono" style="margin-left:0.5rem">OPEN SOURCE</span></p>
+          <h2 id="authTitle" class="section__title">Hagar Auth — <span class="text-gradient">clé en main</span></h2>
+          <p class="section__subtitle">Vous créez un projet, définissez vos champs, et l'app génère des formulaires d'inscription/connexion prêts à intégrer. <strong>Pas de backend à écrire</strong> : vous déposez les fichiers générés et l'authentification fonctionne.</p>
+        </header>
+
+        <div class="auth-grid">
+          <div class="auth__benefits" data-reveal>
+            <h3 class="auth__heading">Avantages</h3>
+            <ul class="checklist">
+              <li><strong>Clé en main</strong> — aucun backend à écrire, déposez les fichiers générés et c'est prêt</li>
+              <li><strong>Champs personnalisables</strong> — définissez la structure des utilisateurs (texte, email, mot de passe, nombre, date, etc.)</li>
+              <li><strong>Sécurisé</strong> — mots de passe hachés (Argon2id), jamais stockés en clair ni renvoyés par l'API</li>
+              <li><strong>Tableau de bord</strong> — consultez la liste des inscrits de chaque projet, avec date d'inscription</li>
+              <li><strong>Clé API par projet</strong> — chaque projet possède sa propre clé et sa propre structure</li>
+              <li><strong>Rate limiting & CSRF</strong> — protection brute-force, CSRF sur toutes les actions, CORS limité, HTTPS forcé en production</li>
+            </ul>
+            <div class="auth__logo-wrap">
+              <img src="assets/hagar-auth.png" alt="Hagar Auth" loading="lazy">
+              <span class="mono small muted">Hagar Auth · open source</span>
+            </div>
+            <div class="hero__actions">
+              <a href="https://hagar-auth.vercel.app" class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">Site officiel<span class="arrow">→</span></a>
+              <a href="https://github.com/vichbcode/hagar-auth-X" class="btn btn--secondary btn--sm" target="_blank" rel="noopener noreferrer">GitHub (open source)<span class="arrow">→</span></a>
+            </div>
+          </div>
+
+          <div class="auth__terminal" data-reveal="delay-1">
+            <div class="terminal">
+              <div class="terminal__bar">
+                <span class="terminal__dot terminal__dot--red"></span>
+                <span class="terminal__dot terminal__dot--yellow"></span>
+                <span class="terminal__dot terminal__dot--green"></span>
+                <span class="terminal__title mono small">auth-integration.js</span>
+              </div>
+              <pre class="terminal__content mono" tabindex="0" aria-label="Snippet d'intégration Hagar Auth"><code>// Hagar Auth — inscription (fichiers générés)
+// 1. Créez votre projet sur hagar-auth.vercel.app
+// 2. Téléchargez inscription.html + connexion.html
+// 3. Hébergez-les sur votre site — c'est tout.
+
+// Appel API direct (si intégration sur mesure) :
+const res = await fetch("https://hagar-auth.vercel.app/api/hagar/register", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "X-Hagar-Token": "votre-cle-api-projet"
+  },
+  body: new URLSearchParams({
+    "Pseudo": "client",
+    "Mot de passe": "azerty12"
+  })
+});
+const data = await res.json();
+// 201 → créé · 400 → validation · 401 → jeton invalide
+console.log(data);
+</code></pre>
+              <div class="terminal__footer mono small muted">// Routes : POST /api/hagar/register · POST /api/hagar/login — Limites : 30 req/min/IP</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Étapes d'utilisation Hagar Auth -->
+        <div class="features-num" style="margin-top:clamp(2rem,6vw,3rem)">
+          <article class="feature-num" data-reveal>
+            <span class="feature-num__index mono">01 —</span>
+            <h3 class="feature-num__title">Créer un compte admin</h3>
+            <p class="feature-num__desc">Allez sur /register, choisissez un pseudo et un mot de passe fort (12+ caractères, 3 catégories). Connectez-vous via /login.</p>
+          </article>
+          <article class="feature-num" data-reveal="delay-1">
+            <span class="feature-num__index mono">02 —</span>
+            <h3 class="feature-num__title">Créer un Hagar</h3>
+            <p class="feature-num__desc">Nommez votre projet, définissez la structure des champs (le premier sert d'identifiant, un champ Mot de passe est obligatoire).</p>
+          </article>
+          <article class="feature-num" data-reveal="delay-2">
+            <span class="feature-num__index mono">03 —</span>
+            <h3 class="feature-num__title">Clé API & fichiers</h3>
+            <p class="feature-num__desc">Récupérez la clé API (affichée une seule fois), puis téléchargez inscription.html, connexion.html et hagar_config.js.</p>
+          </article>
+          <article class="feature-num" data-reveal="delay-3">
+            <span class="feature-num__index mono">04 —</span>
+            <h3 class="feature-num__title">Intégrer & suivre</h3>
+            <p class="feature-num__desc">Hébergez les fichiers sur votre site. Consultez les inscrits depuis le tableau de bord (Voir les utilisateurs).</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. DÉMARRAGE RAPIDE -->
+    <section id="doc" class="section steps" aria-labelledby="stepsTitle">
+      <div class="container">
+        <header class="section__header" data-reveal>
+          <p class="eyebrow mono">// Démarrage rapide</p>
+          <h2 id="stepsTitle" class="section__title">Démarrage rapide <span class="text-gradient">en 3 étapes</span></h2>
+          <p class="section__subtitle">Mettez-vous en route simplement avec nos applications.</p>
+        </header>
+        <ol class="steps__list">
+          <li class="step" data-reveal>
+            <span class="step__num mono">01</span>
+            <h3 class="step__title">Découvrez</h3>
+            <p class="step__desc">Parcourez le hub et identifiez l'application qui correspond à votre besoin (TRIXIFILMS ou Auth).</p>
+          </li>
+          <li class="step" data-reveal="delay-1">
+            <span class="step__num mono">02</span>
+            <h3 class="step__title">Testez / Intégrez</h3>
+            <p class="step__desc">Lisez la doc pour TRIXIFILMS (APK à venir) ou intégrez le service d'auth avec le snippet ci-dessus.</p>
+          </li>
+          <li class="step" data-reveal="delay-2">
+            <span class="step__num mono">03</span>
+            <h3 class="step__title">Rejoignez la communauté</h3>
+            <p class="step__desc">Partagez vos retours, suggestions ou idées sur GitHub/Discord pour faire évoluer les projets.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 7. COMMUNAUTÉ / CONTACT -->
+    <section id="communaute" class="section community" aria-labelledby="commTitle">
+      <div class="container">
+        <header class="section__header center" data-reveal>
+          <p class="eyebrow mono">// Communauté</p>
+          <h2 id="commTitle" class="section__title">Rejoignez la <span class="text-gradient">communauté</span></h2>
+          <p class="section__subtitle">Échangeons autour des projets LOOKI.</p>
+        </header>
+        <div class="links-grid">
+          <a href="https://github.com/vichbcode/TRIXIFILMS" class="link-card" target="_blank" rel="noopener noreferrer" data-reveal aria-label="Voir le GitHub de TRIXIFILMS (open source)">
+            <div class="link-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </div>
+            <div class="link-card__content">
+              <h3 class="link-card__title">GitHub — TRIXIFILMS</h3>
+              <p class="link-card__desc mono small">github.com/vichbcode/TRIXIFILMS · open source</p>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://github.com/vichbcode/hagar-auth-X" class="link-card" target="_blank" rel="noopener noreferrer" data-reveal="delay-1" aria-label="Voir le GitHub de Hagar Auth (open source)">
+            <div class="link-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </div>
+            <div class="link-card__content">
+              <h3 class="link-card__title">GitHub — Hagar Auth</h3>
+              <p class="link-card__desc mono small">github.com/vichbcode/hagar-auth-X · open source</p>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://trixifilmx.vercel.app/installation" class="link-card" target="_blank" rel="noopener noreferrer" data-reveal="delay-2" aria-label="Télécharger TRIXIFILMS">
+            <div class="link-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </div>
+            <div class="link-card__content">
+              <h3 class="link-card__title">Télécharger TRIXIFILMS</h3>
+              <p class="link-card__desc mono small">trixifilmx.vercel.app/installation · APK gratuit</p>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://hagar-auth.vercel.app" class="link-card" target="_blank" rel="noopener noreferrer" data-reveal="delay-3" aria-label="Voir le site de Hagar Auth">
+            <div class="link-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </div>
+            <div class="link-card__content">
+              <h3 class="link-card__title">Site Hagar Auth</h3>
+              <p class="link-card__desc mono small">hagar-auth.vercel.app · service en ligne</p>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+          <a href="mailto:zogixa@protonmail.com" class="link-card" data-reveal="delay-4" aria-label="Contacter LOOKI par email">
+            <div class="link-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="link-card__content">
+              <h3 class="link-card__title">Contact</h3>
+              <p class="link-card__desc mono small">zogixa@protonmail.com · Écrivez-nous</p>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENTIONS LÉGALES & CONFIDENTIALITÉ -->
+    <section id="mentions-legales" class="section legal" aria-labelledby="legalTitle">
+      <div class="container">
+        <header class="section__header" data-reveal>
+          <p class="eyebrow mono">// Informations légales</p>
+          <h2 id="legalTitle" class="section__title">Mentions légales & <span class="text-gradient">confidentialité</span></h2>
+        </header>
+        <div class="legal-grid">
+          <article class="legal-card" data-reveal>
+            <h3 class="legal-card__title">Mentions légales</h3>
+            <p>Le site <strong>looki.club</strong> et les applications présentées (TRIXIFILMS, Hagar Auth) sont des projets indépendants portés par un auteur anonyme.</p>
+            <p>Le site est hébergé sur <strong>Vercel</strong>. Les applications TRIXIFILMS et Hagar Auth sont également hébergées sur Vercel (trixifilmx.vercel.app, hagar-auth.vercel.app).</p>
+            <p>Contact : <a href="mailto:zogixa@protonmail.com" class="legal-link">zogixa@protonmail.com</a></p>
+          </article>
+          <article class="legal-card" data-reveal="delay-1" id="confidentialite">
+            <h3 class="legal-card__title">Politique de confidentialité</h3>
+            <p>Le site vitrine LOOKI ne collecte <strong>aucune donnée personnelle</strong>, n'utilise <strong>aucun traceur</strong> ni cookie de suivi.</p>
+            <p><strong>TRIXIFILMS</strong> : aucun traceur, aucune publicité, aucune revente de données. Les mots de passe sont hachés et la connexion est chiffrée.</p>
+            <p><strong>Hagar Auth</strong> : mots de passe hachés (Argon2id), jamais stockés en clair ni renvoyés par l'API. Rate limiting et HTTPS en production.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer id="contact" class="footer" role="contentinfo">
+      <div class="container footer__inner">
+        <div class="footer__brand" data-reveal>
+          <a href="#accueil" class="footer__logo-link" aria-label="LOOKI Accueil">
+            <img src="assets/logo.png" alt="Logo LOOKI" class="footer__logo">
+            <span class="footer__name">LOOKI</span>
+          </a>
+          <p class="footer__tagline">Club tech indépendant — Hub d'applications open source. Design sobre, tech et orienté produit.</p>
+          <p class="mono small muted">// looki.club · hébergé sur Vercel</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col" data-reveal="delay-1">
+            <h3 class="footer__heading mono">Apps</h3>
+            <ul class="footer__list">
+              <li><a href="https://trixifilmx.vercel.app/installation" target="_blank" rel="noopener noreferrer">TRIXIFILMS</a></li>
+              <li><a href="https://hagar-auth.vercel.app" target="_blank" rel="noopener noreferrer">Hagar Auth</a></li>
+              <li><a href="#apps">Bientôt</a></li>
+            </ul>
+          </div>
+          <div class="footer__col" data-reveal="delay-2">
+            <h3 class="footer__heading mono">Ressources</h3>
+            <ul class="footer__list">
+              <li><a href="https://github.com/vichbcode/TRIXIFILMS" target="_blank" rel="noopener noreferrer">GitHub TRIXIFILMS</a></li>
+              <li><a href="https://github.com/vichbcode/hagar-auth-X" target="_blank" rel="noopener noreferrer">GitHub Hagar Auth</a></li>
+              <li><a href="#doc">Démarrage rapide</a></li>
+            </ul>
+          </div>
+          <div class="footer__col" data-reveal="delay-3">
+            <h3 class="footer__heading mono">Légal</h3>
+            <ul class="footer__list">
+              <li><a href="#mentions-legales">Mentions légales</a></li>
+              <li><a href="#confidentialite">Politique de confidentialité</a></li>
+            </ul>
+          </div>
+          <div class="footer__col" data-reveal="delay-4">
+            <h3 class="footer__heading mono">Contact</h3>
+            <ul class="footer__list">
+              <li><a href="mailto:zogixa@protonmail.com">zogixa@protonmail.com</a></li>
+              <li><span class="muted mono small">Langue : Français (FR)</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="container footer__bottom-inner">
+          <p class="mono small muted">© <span id="year"></span> LOOKI — Projet indépendant.</p>
+        </div>
+      </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top btn btn--icon btn--primary" type="button" aria-label="Retour en haut de la page" title="Retour en haut">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

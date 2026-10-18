@@ -1,0 +1,7 @@
+# Images sources en double dans la racine (copies dans assets/)
+WhatsApp Image *.jpeg
+
+# Fichiers système
+Thumbs.db
+Desktop.ini
+.DS_Store
