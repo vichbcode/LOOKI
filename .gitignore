@@ -1,6 +1,9 @@
 # Images sources en double dans la racine (copies dans assets/)
 WhatsApp Image *.jpeg
 
+# Exécutables (trop lourds pour GitHub — à distribuer via Releases)
+*.exe
+
 # Fichiers système
 Thumbs.db
 Desktop.ini

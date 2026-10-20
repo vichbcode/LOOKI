@@ -233,6 +233,7 @@ strong { color: rgb(var(--text-primary)); font-weight: 600; }
 .zoom { position: relative; }
 .zoom--trix { background: radial-gradient(ellipse at top, rgb(var(--color-primary)/0.08) 0%, transparent 70%); }
 .zoom--auth { background: radial-gradient(ellipse at top, rgb(120 160 230/0.08) 0%, transparent 70%); }
+.zoom--lmt { background: radial-gradient(ellipse at top, rgb(180 140 230/0.08) 0%, transparent 70%); }
 .features-num { display: grid; grid-template-columns: 1fr; gap: clamp(var(--space-sm),3vw,var(--space-lg)); margin-bottom: clamp(var(--space-2xl),6vw,var(--space-3xl)); }
 @media (min-width: 720px) { .features-num { grid-template-columns: repeat(2,1fr); } }
 @media (min-width: 1080px) { .features-num { grid-template-columns: repeat(4,1fr); } }

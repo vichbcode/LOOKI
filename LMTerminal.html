@@ -1,0 +1,386 @@
+<!--
+  Fichier : LMTerminal.html
+  Projet  : Site vitrine du club LOOKI
+  Objectif: Page dédiée à l'application LMTerminal (terminal personnalisable)
+  Langue  : Français
+  Notes   : Reprend le design system du site (style.css + script.js)
+-->
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <!-- Métadonnées de base -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Titre et description SEO (FR) -->
+  <title>LMTerminal — Terminal personnalisable | LOOKI</title>
+  <meta name="description" content="LMTerminal : terminal Windows totalement personnalisable et complet, par le club LOOKI. Disponible en Setup x64 et version ARM64.">
+  <meta name="author" content="LOOKI">
+  <meta name="robots" content="index, follow">
+
+  <!-- Thème couleur -->
+  <meta name="theme-color" content="#0b0b0f" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+
+  <!-- Open Graph (partage réseaux sociaux) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:title" content="LMTerminal — Terminal personnalisable | LOOKI">
+  <meta property="og:description" content="Terminal Windows totalement personnalisable et complet. Setup x64 et ARM64.">
+  <meta property="og:site_name" content="LOOKI">
+  <meta property="og:image" content="assets/LMTerminal.png">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+
+  <!-- Polices Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Feuille de styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ========================= NAVBAR STICKY ========================= -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__brand" aria-label="Retour à l'accueil LOOKI">
+        <img src="assets/logo.png" alt="Logo du club LOOKI" class="navbar__logo">
+        <span class="navbar__name">LOOKI</span>
+      </a>
+
+      <nav class="navbar__nav" role="navigation" aria-label="Navigation principale">
+        <ul class="navbar__links">
+          <li><a href="index.html" class="navbar__link">Accueil</a></li>
+          <li><a href="index.html#apps" class="navbar__link">Apps</a></li>
+          <li><a href="index.html#fonctionnalites" class="navbar__link">Fonctionnalités</a></li>
+          <li><a href="index.html#doc" class="navbar__link">Doc</a></li>
+          <li><a href="index.html#communaute" class="navbar__link">Communauté</a></li>
+          <li><a href="index.html#contact" class="navbar__link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="navbar__actions">
+        <!-- Bascule thème clair/sombre -->
+        <button class="btn btn--ghost btn--icon" id="themeToggle" type="button" aria-label="Basculer entre le thème sombre et clair" title="Basculer le thème">
+          <svg class="icon icon--sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon icon--moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Menu mobile -->
+        <button class="btn btn--ghost btn--icon navbar__toggle" id="navToggle" type="button" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobileNav">
+          <span class="hamburger" aria-hidden="true">
+            <span class="hamburger__line"></span>
+            <span class="hamburger__line"></span>
+            <span class="hamburger__line"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu mobile -->
+    <div class="navbar__mobile" id="mobileNav" hidden>
+      <div class="navbar__mobile-backdrop" data-close-nav></div>
+      <div class="navbar__mobile-panel" role="dialog" aria-modal="true" aria-label="Menu de navigation mobile">
+        <nav aria-label="Navigation mobile">
+          <ul class="navbar__mobile-links">
+            <li><a href="index.html" class="navbar__mobile-link" data-nav-mobile>Accueil</a></li>
+            <li><a href="index.html#apps" class="navbar__mobile-link" data-nav-mobile>Apps</a></li>
+            <li><a href="index.html#fonctionnalites" class="navbar__mobile-link" data-nav-mobile>Fonctionnalités</a></li>
+            <li><a href="index.html#doc" class="navbar__mobile-link" data-nav-mobile>Doc</a></li>
+            <li><a href="index.html#communaute" class="navbar__mobile-link" data-nav-mobile>Communauté</a></li>
+            <li><a href="index.html#contact" class="navbar__mobile-link" data-nav-mobile>Contact</a></li>
+          </ul>
+        </nav>
+        <div class="navbar__mobile-footer">
+          <button class="btn btn--secondary btn--block" id="closeNavBtn" type="button">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+    <!-- HERO LMTerminal -->
+    <section class="section hero" aria-labelledby="lmtTitle">
+      <div class="container hero__inner">
+        <div class="hero__content" data-reveal>
+          <p class="eyebrow mono">// LMTerminal · Windows</p>
+          <h1 id="lmtTitle" class="hero__title">
+            Le terminal <span class="text-gradient">totalement personnalisable</span>
+          </h1>
+          <p class="hero__subtitle">
+            LMTerminal est un terminal Windows complet, pensé pour être à votre image : configuration fine, fonctionnalités riches, interface soignée. Disponible en Setup x64 et version ARM64.
+          </p>
+          <div class="hero__actions">
+            <!-- TODO : remplacer les href "#" par les liens de téléchargement réels -->
+            <a href="#telechargement" class="btn btn--primary">Télécharger<span class="arrow">→</span></a>
+            <a href="index.html#apps" class="btn btn--secondary">Retour aux apps<span class="arrow">→</span></a>
+          </div>
+          <div class="hero__trust">
+            <span class="mono small muted">// Présenté par le club LOOKI</span>
+          </div>
+        </div>
+        <div class="hero__visual" data-reveal="delay">
+          <div class="orb orb--primary"></div>
+          <div class="orb orb--secondary"></div>
+          <figure class="hero__figure">
+            <img src="assets/LMTerminal.png" alt="Logo LMTerminal" class="hero__logo" loading="eager">
+          </figure>
+        </div>
+      </div>
+      <div class="hero__bg"></div>
+    </section>
+
+    <!-- CHIFFRES CLÉS -->
+    <section class="section stats" aria-labelledby="lmtStats">
+      <div class="container">
+        <h2 id="lmtStats" class="sr-only">Points clés LMTerminal</h2>
+        <p class="eyebrow mono center">// LMTerminal en bref</p>
+        <div class="stats__grid">
+          <article class="stat-card" data-reveal>
+            <p class="stat-card__value">100%</p>
+            <p class="stat-card__label">Personnalisable</p>
+          </article>
+          <article class="stat-card" data-reveal="delay-1">
+            <p class="stat-card__value">2</p>
+            <p class="stat-card__label">Architectures (x64 / ARM64)</p>
+          </article>
+          <article class="stat-card" data-reveal="delay-2">
+            <p class="stat-card__value">1</p>
+            <p class="stat-card__label">Setup d'installation</p>
+          </article>
+          <article class="stat-card" data-reveal="delay-3">
+            <p class="stat-card__value">WIN</p>
+            <p class="stat-card__label">Plateforme Windows</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FONCTIONNALITÉS -->
+    <section class="section zoom zoom--lmt" aria-labelledby="lmtFeat">
+      <div class="container">
+        <header class="section__header" data-reveal>
+          <p class="eyebrow mono">// Fonctionnalités</p>
+          <h2 id="lmtFeat" class="section__title">Un terminal <span class="text-gradient">complet</span> et vivant</h2>
+          <p class="section__subtitle">Tout ce qu'on attend d'un terminal moderne, avec une personnalisation poussée.</p>
+        </header>
+
+        <div class="features-num">
+          <article class="feature-num" data-reveal>
+            <span class="feature-num__index mono">01 —</span>
+            <h3 class="feature-num__title">Totalement personnalisable</h3>
+            <p class="feature-num__desc">Thèmes, couleurs, polices, disposition : ajustez chaque détail du terminal selon vos préférences.</p>
+          </article>
+          <article class="feature-num" data-reveal="delay-1">
+            <span class="feature-num__index mono">02 —</span>
+            <h3 class="feature-num__title">Complet</h3>
+            <p class="feature-num__desc">Toutes les commandes et fonctionnalités attendues d'un terminal sérieux, réunies au même endroit.</p>
+          </article>
+          <article class="feature-num" data-reveal="delay-2">
+            <span class="feature-num__index mono">03 —</span>
+            <h3 class="feature-num__title">Setup x64</h3>
+            <p class="feature-num__desc">Installation simple et rapide sur les processeurs Intel/AMD 64 bits grâce au programme d'installation.</p>
+          </article>
+          <article class="feature-num" data-reveal="delay-3">
+            <span class="feature-num__index mono">04 —</span>
+            <h3 class="feature-num__title">Version ARM64</h3>
+            <p class="feature-num__desc">Build dédié pour les appareils Windows à processeur ARM, pour des performances natives.</p>
+          </article>
+        </div>
+
+        <!-- Bloc terminal stylisé (aperçu) -->
+        <div class="auth-grid">
+          <div class="auth__benefits" data-reveal>
+            <h3 class="auth__heading">Pourquoi LMTerminal ?</h3>
+            <ul class="checklist">
+              <li><strong>Personnalisation totale</strong> — le terminal s'adapte à votre façon de travailler</li>
+              <li><strong>Version complète</strong> — pas de version édité, tout est inclus</li>
+              <li><strong>Deux architectures</strong> — Setup x64 et ARM64 pour couvrir tous les PC Windows</li>
+              <li><strong>Présenté par LOOKI</strong> — même exigence de qualité que nos autres apps</li>
+            </ul>
+          </div>
+          <div class="auth__terminal" data-reveal="delay-1">
+            <div class="terminal">
+              <div class="terminal__bar">
+                <span class="terminal__dot terminal__dot--red"></span>
+                <span class="terminal__dot terminal__dot--yellow"></span>
+                <span class="terminal__dot terminal__dot--green"></span>
+                <span class="terminal__title mono small">LMTerminal — aperçu</span>
+              </div>
+              <pre class="terminal__content mono" tabindex="0" aria-label="Aperçu du terminal LMTerminal"><code>PS C:\Users\looki&gt; LMTerminal --version
+LMTerminal v1.0 — édition complète
+
+PS C:\Users\looki&gt; LMTerminal --theme nord
+&gt; thème appliqué : nord
+
+PS C:\Users\looki&gt; LMTerminal --font "JetBrains Mono"
+&gt; police mise à jour : JetBrains Mono
+
+PS C:\Users\looki&gt;</code></pre>
+              <div class="terminal__footer mono small muted">// Personnalisation en temps réel, sans redémarrer</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TÉLÉCHARGEMENT -->
+        <div id="telechargement" style="margin-top:clamp(2rem,6vw,3rem)">
+          <header class="section__header center" data-reveal>
+            <p class="eyebrow mono center">// Téléchargement</p>
+            <h2 class="section__title" style="max-width:none">Installer <span class="text-gradient">LMTerminal</span></h2>
+            <p class="section__subtitle">Choisissez l'archive correspondant à votre architecture.</p>
+          </header>
+          <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))">
+            <!-- TODO : remplacer les href "#" par les liens de téléchargement réels -->
+            <article class="app-card" data-reveal>
+              <div class="app-card__header">
+                <span class="chip chip--active mono">x64</span>
+              </div>
+              <h3 class="app-card__title">Setup x64</h3>
+              <p class="app-card__desc">Installateur Windows pour processeurs Intel/AMD 64 bits. Double-cliquez sur le fichier et suivez l'assistant.</p>
+              <div class="app-card__actions">
+                <a href="#" class="btn btn--primary btn--sm" aria-disabled="true">Télécharger le Setup<span class="arrow">→</span></a>
+              </div>
+            </article>
+            <article class="app-card" data-reveal="delay-1">
+              <div class="app-card__header">
+                <span class="chip chip--active mono">ARM64</span>
+              </div>
+              <h3 class="app-card__title">Version ARM64</h3>
+              <p class="app-card__desc">Build natif pour les appareils Windows à processeur ARM. Performances optimisées, aucun émulateur.</p>
+              <div class="app-card__actions">
+                <a href="#" class="btn btn--primary btn--sm" aria-disabled="true">Télécharger ARM64<span class="arrow">→</span></a>
+              </div>
+            </article>
+          </div>
+          <p class="center small muted mono" data-reveal>// Plateforme : Windows · Deux architectures disponibles</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / COMMUNAUTÉ -->
+    <section class="section community" aria-labelledby="lmtContact">
+      <div class="container">
+        <header class="section__header center" data-reveal>
+          <p class="eyebrow mono">// Une question ?</p>
+          <h2 id="lmtContact" class="section__title">Contactez <span class="text-gradient">LOOKI</span></h2>
+          <p class="section__subtitle">Une idée, un bug, une suggestion sur LMTerminal ? Écrivez-nous.</p>
+        </header>
+        <div class="links-grid">
+          <a href="mailto:zogixa@protonmail.com" class="link-card" data-reveal aria-label="Contacter LOOKI par email">
+            <div class="link-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="link-card__content">
+              <h3 class="link-card__title">Contact</h3>
+              <p class="link-card__desc mono small">zogixa@protonmail.com · Écrivez-nous</p>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+          <a href="index.html#apps" class="link-card" data-reveal="delay-1" aria-label="Voir toutes les applications LOOKI">
+            <div class="link-card__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            </div>
+            <div class="link-card__content">
+              <h3 class="link-card__title">Autres apps</h3>
+              <p class="link-card__desc mono small">TRIXIFILMS · Hagar Auth · et plus</p>
+            </div>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENTIONS LÉGALES -->
+    <section id="mentions-legales" class="section legal" aria-labelledby="legalTitleLmt">
+      <div class="container">
+        <header class="section__header" data-reveal>
+          <p class="eyebrow mono">// Informations légales</p>
+          <h2 id="legalTitleLmt" class="section__title">Mentions légales & <span class="text-gradient">confidentialité</span></h2>
+        </header>
+        <div class="legal-grid">
+          <article class="legal-card" data-reveal>
+            <h3 class="legal-card__title">Mentions légales</h3>
+            <p>LMTerminal est une application du <strong>club LOOKI</strong>, projet open source. Contact : <a href="mailto:zogixa@protonmail.com" class="legal-link">zogixa@protonmail.com</a></p>
+          </article>
+          <article class="legal-card" data-reveal="delay-1">
+            <h3 class="legal-card__title">Politique de confidentialité</h3>
+            <p>LMTerminal ne collecte <strong>aucune donnée</strong>, n'envoie aucune télémétrie et n'utilise aucun traceur.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand" data-reveal>
+        <a href="index.html" class="footer__logo-link" aria-label="LOOKI Accueil">
+          <img src="assets/logo.png" alt="Logo LOOKI" class="footer__logo">
+          <span class="footer__name">LOOKI</span>
+        </a>
+        <p class="footer__tagline">Club tech — Hub d'applications open source. Design sobre, tech et orienté produit.</p>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col" data-reveal="delay-1">
+          <h3 class="footer__heading mono">Apps</h3>
+          <ul class="footer__list">
+            <li><a href="LMTerminal.html">LMTerminal</a></li>
+            <li><a href="https://trixifilmx.vercel.app/installation" target="_blank" rel="noopener noreferrer">TRIXIFILMS</a></li>
+            <li><a href="https://hagar-auth.vercel.app" target="_blank" rel="noopener noreferrer">Hagar Auth</a></li>
+          </ul>
+        </div>
+        <div class="footer__col" data-reveal="delay-2">
+          <h3 class="footer__heading mono">Ressources</h3>
+          <ul class="footer__list">
+            <li><a href="https://github.com/vichbcode/TRIXIFILMS" target="_blank" rel="noopener noreferrer">GitHub TRIXIFILMS</a></li>
+            <li><a href="https://github.com/vichbcode/hagar-auth-X" target="_blank" rel="noopener noreferrer">GitHub Hagar Auth</a></li>
+            <li><a href="index.html#doc">Démarrage rapide</a></li>
+          </ul>
+        </div>
+        <div class="footer__col" data-reveal="delay-3">
+          <h3 class="footer__heading mono">Légal</h3>
+          <ul class="footer__list">
+            <li><a href="#mentions-legales">Mentions légales</a></li>
+            <li><a href="#mentions-legales">Politique de confidentialité</a></li>
+          </ul>
+        </div>
+        <div class="footer__col" data-reveal="delay-4">
+          <h3 class="footer__heading mono">Contact</h3>
+          <ul class="footer__list">
+            <li><a href="mailto:zogixa@protonmail.com">zogixa@protonmail.com</a></li>
+            <li><span class="muted mono small">Langue : Français (FR)</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p class="mono small muted">LOOKI — Club de projets open source.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top btn btn--icon btn--primary" type="button" aria-label="Retour en haut de la page" title="Retour en haut">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
