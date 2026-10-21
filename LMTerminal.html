@@ -14,7 +14,7 @@
 
   <!-- Titre et description SEO (FR) -->
   <title>LMTerminal — Terminal personnalisable | LOOKI</title>
-  <meta name="description" content="LMTerminal : terminal Windows totalement personnalisable et complet, par le club LOOKI. Disponible en Setup x64 et version ARM64.">
+  <meta name="description" content="LMTerminal : terminal totalement personnalisable et complet, par le club LOOKI. Windows (x64 / ARM64, installateur et portable) et Linux ARM64 (AppImage, .deb, .rpm).">
   <meta name="author" content="LOOKI">
   <meta name="robots" content="index, follow">
 
@@ -26,7 +26,7 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:title" content="LMTerminal — Terminal personnalisable | LOOKI">
-  <meta property="og:description" content="Terminal Windows totalement personnalisable et complet. Setup x64 et ARM64.">
+  <meta property="og:description" content="Terminal totalement personnalisable et complet. Windows x64/ARM64 (setup + portable) et Linux ARM64.">
   <meta property="og:site_name" content="LOOKI">
   <meta property="og:image" content="assets/LMTerminal.png">
 
@@ -124,7 +124,7 @@
             Le terminal <span class="text-gradient">totalement personnalisable</span>
           </h1>
           <p class="hero__subtitle">
-            LMTerminal est un terminal Windows complet, pensé pour être à votre image : configuration fine, fonctionnalités riches, interface soignée. Disponible en Setup x64 et version ARM64.
+            LMTerminal est un terminal complet, pensé pour être à votre image : configuration fine, fonctionnalités riches, interface soignée. Disponible sur Windows (x64 et ARM64, installateur et portable) et Linux ARM64 (AppImage, .deb, .rpm).
           </p>
           <div class="hero__actions">
             <a href="#telechargement" class="btn btn--primary">Télécharger<span class="arrow">→</span></a>
@@ -156,16 +156,16 @@
             <p class="stat-card__label">Personnalisable</p>
           </article>
           <article class="stat-card" data-reveal="delay-1">
-            <p class="stat-card__value">2</p>
-            <p class="stat-card__label">Architectures (x64 / ARM64)</p>
+            <p class="stat-card__value">7</p>
+            <p class="stat-card__label">Téléchargements</p>
           </article>
           <article class="stat-card" data-reveal="delay-2">
-            <p class="stat-card__value">1</p>
-            <p class="stat-card__label">Setup d'installation</p>
+            <p class="stat-card__value">2</p>
+            <p class="stat-card__label">Plateformes (Windows / Linux)</p>
           </article>
           <article class="stat-card" data-reveal="delay-3">
-            <p class="stat-card__value">WIN</p>
-            <p class="stat-card__label">Plateforme Windows</p>
+            <p class="stat-card__value">2</p>
+            <p class="stat-card__label">Architectures (x64 / ARM64)</p>
           </article>
         </div>
       </div>
@@ -193,13 +193,13 @@
           </article>
           <article class="feature-num" data-reveal="delay-2">
             <span class="feature-num__index mono">03 —</span>
-            <h3 class="feature-num__title">Setup x64</h3>
-            <p class="feature-num__desc">Installation simple et rapide sur les processeurs Intel/AMD 64 bits grâce au programme d'installation.</p>
+            <h3 class="feature-num__title">Installateur & portable</h3>
+            <p class="feature-num__desc">Choisissez la version Setup pour installer LMTerminal, ou la version Portable pour la lancer sans installation.</p>
           </article>
           <article class="feature-num" data-reveal="delay-3">
             <span class="feature-num__index mono">04 —</span>
-            <h3 class="feature-num__title">Version ARM64</h3>
-            <p class="feature-num__desc">Build dédié pour les appareils Windows à processeur ARM, pour des performances natives.</p>
+            <h3 class="feature-num__title">Windows & Linux</h3>
+            <p class="feature-num__desc">Builds x64 et ARM64 sous Windows ; sous Linux ARM64 au format AppImage, .deb (Debian/Ubuntu/Mint) et .rpm (Fedora/RHEL).</p>
           </article>
         </div>
 
@@ -210,7 +210,7 @@
             <ul class="checklist">
               <li><strong>Personnalisation totale</strong> — le terminal s'adapte à votre façon de travailler</li>
               <li><strong>Version complète</strong> — pas de version édité, tout est inclus</li>
-              <li><strong>Deux architectures</strong> — Setup x64 et ARM64 pour couvrir tous les PC Windows</li>
+              <li><strong>Multi-plateformes</strong> — Windows (x64 / ARM64) et Linux ARM64, en installateur et portable</li>
               <li><strong>Présenté par LOOKI</strong> — même exigence de qualité que nos autres apps</li>
             </ul>
           </div>
@@ -241,32 +241,90 @@ PS C:\Users\looki&gt;</code></pre>
         <div id="telechargement" style="margin-top:clamp(2rem,6vw,3rem)">
           <header class="section__header center" data-reveal>
             <p class="eyebrow mono center">// Téléchargement</p>
-            <h2 class="section__title" style="max-width:none">Installer <span class="text-gradient">LMTerminal</span></h2>
-            <p class="section__subtitle">Choisissez l'archive correspondant à votre architecture.</p>
+            <h2 class="section__title" style="max-width:none">Télécharger <span class="text-gradient">LMTerminal</span></h2>
+            <p class="section__subtitle">Choisissez l'archive correspondant à votre système et votre architecture.</p>
           </header>
-          <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))">
+
+          <!-- Windows -->
+          <p class="eyebrow mono" data-reveal>// Windows</p>
+          <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));margin-bottom:clamp(1.5rem,4vw,2.5rem)">
             <article class="app-card" data-reveal>
               <div class="app-card__header">
-                <span class="chip chip--active mono">x64</span>
+                <span class="chip chip--active mono">SETUP · x64</span>
               </div>
-              <h3 class="app-card__title">Setup x64</h3>
-              <p class="app-card__desc">Installateur Windows pour processeurs Intel/AMD 64 bits. Double-cliquez sur le fichier et suivez l'assistant.</p>
+              <h3 class="app-card__title">Installateur x64</h3>
+              <p class="app-card__desc">Pour les PC Intel/AMD 64 bits. Double-cliquez sur le fichier et suivez l'assistant d'installation.</p>
               <div class="app-card__actions">
-                <a href="https://github.com/vichbcode/LOOKI/releases/download/v1.0/LMTerminal-SETUP.x64.exe" class="btn btn--primary btn--sm" download>Télécharger le Setup<span class="arrow">→</span></a>
+                <a href="https://github.com/vichbcode/LOOKI/releases/download/v1.0/LMTerminal-Setup-x64.exe" class="btn btn--primary btn--sm" download>Télécharger (94,7 Mo)<span class="arrow">→</span></a>
               </div>
             </article>
             <article class="app-card" data-reveal="delay-1">
               <div class="app-card__header">
-                <span class="chip chip--active mono">ARM64</span>
+                <span class="chip chip--active mono">SETUP · ARM64</span>
               </div>
-              <h3 class="app-card__title">Version ARM64</h3>
-              <p class="app-card__desc">Build natif pour les appareils Windows à processeur ARM. Performances optimisées, aucun émulateur.</p>
+              <h3 class="app-card__title">Installateur ARM64</h3>
+              <p class="app-card__desc">Pour les appareils Windows à processeur ARM. Build natif, performances optimisées.</p>
               <div class="app-card__actions">
-                <a href="https://github.com/vichbcode/LOOKI/releases/download/v1.0/LMTerminal-ARM64-Setup.exe" class="btn btn--primary btn--sm" download>Télécharger ARM64<span class="arrow">→</span></a>
+                <a href="https://github.com/vichbcode/LOOKI/releases/download/v1.0/LMTerminal-Setup-ARM64.exe" class="btn btn--primary btn--sm" download>Télécharger (92,1 Mo)<span class="arrow">→</span></a>
+              </div>
+            </article>
+            <article class="app-card" data-reveal="delay-2">
+              <div class="app-card__header">
+                <span class="chip mono">PORTABLE · x64</span>
+              </div>
+              <h3 class="app-card__title">Portable x64</h3>
+              <p class="app-card__desc">Version portable Intel/AMD 64 bits : aucune installation, lancez l'exécutable directement.</p>
+              <div class="app-card__actions">
+                <a href="https://github.com/vichbcode/LOOKI/releases/download/v1.0/LMTerminal-Portable-x64.exe" class="btn btn--secondary btn--sm" download>Télécharger (88,5 Mo)<span class="arrow">→</span></a>
+              </div>
+            </article>
+            <article class="app-card" data-reveal="delay-3">
+              <div class="app-card__header">
+                <span class="chip mono">PORTABLE · ARM64</span>
+              </div>
+              <h3 class="app-card__title">Portable ARM64</h3>
+              <p class="app-card__desc">Version portable pour processeurs ARM sous Windows. Sans installation, prête à l'emploi.</p>
+              <div class="app-card__actions">
+                <a href="https://github.com/vichbcode/LOOKI/releases/download/v1.0/LMTerminal-Portable-ARM64.exe" class="btn btn--secondary btn--sm" download>Télécharger (85,2 Mo)<span class="arrow">→</span></a>
               </div>
             </article>
           </div>
-          <p class="center small muted mono" data-reveal>// Plateforme : Windows · Deux architectures disponibles</p>
+
+          <!-- Linux -->
+          <p class="eyebrow mono" data-reveal>// Linux</p>
+          <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))">
+            <article class="app-card" data-reveal>
+              <div class="app-card__header">
+                <span class="chip chip--active mono">APPIMAGE · ARM64</span>
+              </div>
+              <h3 class="app-card__title">AppImage</h3>
+              <p class="app-card__desc">Format universel portable pour Linux ARM64. Donnez-lui les droits d'exécution et lancez-le.</p>
+              <div class="app-card__actions">
+                <a href="https://github.com/vichbcode/LOOKI/releases/download/v1.0/LMTerminal-Portable-ARM64.AppImage" class="btn btn--primary btn--sm" download>Télécharger (126,9 Mo)<span class="arrow">→</span></a>
+              </div>
+            </article>
+            <article class="app-card" data-reveal="delay-1">
+              <div class="app-card__header">
+                <span class="chip mono">DEB · ARM64</span>
+              </div>
+              <h3 class="app-card__title">Paquet .deb</h3>
+              <p class="app-card__desc">Pour Debian, Ubuntu et Linux Mint (ARM64). Installation via votre gestionnaire de paquets.</p>
+              <div class="app-card__actions">
+                <a href="https://github.com/vichbcode/LOOKI/releases/download/v1.0/lmterminal_1.0.0_arm64.deb" class="btn btn--secondary btn--sm" download>Télécharger (95,2 Mo)<span class="arrow">→</span></a>
+              </div>
+            </article>
+            <article class="app-card" data-reveal="delay-2">
+              <div class="app-card__header">
+                <span class="chip mono">RPM · ARM64</span>
+              </div>
+              <h3 class="app-card__title">Paquet .rpm</h3>
+              <p class="app-card__desc">Pour Fedora et RHEL (ARM64). Installation via dnf ou votre gestionnaire de paquets.</p>
+              <div class="app-card__actions">
+                <a href="https://github.com/vichbcode/LOOKI/releases/download/v1.0/lmterminal-1.0.0.aarch64.rpm" class="btn btn--secondary btn--sm" download>Télécharger (79,3 Mo)<span class="arrow">→</span></a>
+              </div>
+            </article>
+          </div>
+          <p class="center small muted mono" data-reveal style="margin-top:clamp(1rem,3vw,1.5rem)">// Windows (x64 · ARM64) + Linux ARM64 · Release v1.0</p>
         </div>
       </div>
     </section>
